@@ -1,16 +1,41 @@
 ---
 name: rg-code-search
-description: Use when searching code for patterns, class/method definitions, annotations, or multi-file analysis where terminal-based search provides better performance and flexibility than grep_search
+description: Use when searching for patterns, class/method definitions, annotations across files, or when needing context lines, word boundaries, or advanced regex with piped output
 ---
 
 # rg: Fast Code Search
 
 Fast code search using ripgrep via terminal. Respects `.gitignore` automatically.
 
-## When to Use
+## When to Use This Skill
 
-**rg:** Context lines, word boundaries, pipes, multi-pattern, advanced regex  
-**grep_search:** Simple searches (faster, no terminal)
+```mermaid
+graph TD
+    A[Need to search code?] -->|Yes| B[Simple exact match?]
+    B -->|Yes| C[grep_search faster ✅]
+    B -->|No| D[Need context/pipes/regex?]
+    D -->|Yes| E[✅ Use this skill]
+    D -->|No| C
+    A -->|No| F[❌ Skip]
+```
+
+Use this skill when you need to:
+- Search for patterns across multiple files in the codebase
+- Find class, method, or interface definitions
+- Locate specific annotations, attributes, or decorators
+- Analyze code patterns across the entire workspace
+- Perform complex regex searches with context lines
+- Search in specific file types (e.g., only .cs files)
+- Count occurrences or list files containing a pattern
+
+**Prefer rg over grep_search when:**
+- You need context lines around matches
+- You need word boundary matching
+- You want to pipe results to other commands
+- You need advanced regex capabilities
+- You're searching across many files with complex patterns
+
+**Not for:** Simple exact string searches (use grep_search for better performance)
 
 ## Quick Reference
 
